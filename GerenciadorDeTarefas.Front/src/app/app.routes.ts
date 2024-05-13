@@ -5,5 +5,5 @@ import { VisualizarTarefaComponent } from './visualizar-tarefa/visualizar-tarefa
 export const routes: Routes = [
   { path: '', redirectTo: 'lista-de-tarefas', pathMatch: 'full' },
   { path: 'lista-de-tarefas', component: ListaDeTarefasComponent },
-  { path: 'visualizar-tarefa', component: VisualizarTarefaComponent },
+  { path: 'visualizar-tarefa/:idDaTarefa', component: VisualizarTarefaComponent },
 ];

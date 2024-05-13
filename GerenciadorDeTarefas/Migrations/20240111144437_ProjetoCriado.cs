@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -10,19 +11,17 @@ namespace GerenciadorDeTarefas.Migrations
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.EnsureSchema(
-                name: "App");
+        {   
 
             migrationBuilder.CreateTable(
                 name: "Tarefas",
-                schema: "App",
                 columns: table => new
                 {
                     // Id = table.Column<long>(type: "bigint", nullable: false)
                     //    .Annotation("SqlServer:Identity", "1, 1"),
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    Nome = table.Column<string>(type: "text", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nome = table.Column<string>(type: "varchar(100)", nullable: false),
                     Descricao = table.Column<string>(type: "text", nullable: false),
                     Importancia = table.Column<int>(type: "int", nullable: false),
                     Prazo = table.Column<DateTime>(type: "datetime", nullable: true),
@@ -39,8 +38,7 @@ namespace GerenciadorDeTarefas.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Tarefas",
-                schema: "App");
+                name: "Tarefas");
         }
     }
 }

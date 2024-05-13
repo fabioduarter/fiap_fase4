@@ -7,9 +7,26 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ApplicationDbContext>(o => o.UseSqlite(builder.Configuration.GetConnectionString("SQLITE_CONNECTION_STRING")));
+builder.Services.AddDbContext<ApplicationDbContext>(o =>
+{
+    o.UseMySql(builder.Configuration.GetConnectionString("MYSQL_CONNECTION_STRING"),
+              new MySqlServerVersion(
+                   new Version(8,0,31)));
+});
 builder.Services.AddScoped<ITarefasRepository, TarefasRepository>();
 builder.Services.AddControllers().AddJsonOptions(o => o.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
+builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(o =>
 {
@@ -23,4 +40,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.MapControllers();
+
+app.UseCors("AllowSpecificOrigin");
+
 app.Run();
