@@ -5,7 +5,13 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeTarefas", "GerenciadorDeTarefas\GerenciadorDeTarefas.csproj", "{EBE19EC3-02D2-4D5E-BE04-BF9CDB28B1A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GerenciadorDeTarefas.Test", "GerenciadorDeTarefas.Test\GerenciadorDeTarefas.Test.csproj", "{F0F68A02-95A5-42E0-BB65-4B3796F8EB6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GerenciadorDeTarefas.Test", "GerenciadorDeTarefas.Test\GerenciadorDeTarefas.Test.csproj", "{F0F68A02-95A5-42E0-BB65-4B3796F8EB6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Compartilhado", "Compartilhado", "{AB1E4CAD-E733-44CD-84C6-F7DD90436173}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GerenciadorDeTarefas.Infrastructure", "GerenciadorDeTarefas.Infrastructure\GerenciadorDeTarefas.Infrastructure.shproj", "{EDD3D6D0-C880-43A0-BA36-52D79D9F4144}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GerenciadorDeTarefas.Domain", "GerenciadorDeTarefas.Domain\GerenciadorDeTarefas.Domain.shproj", "{5BA9BBBF-B19D-417B-814F-DC812170988E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,7 +31,17 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EDD3D6D0-C880-43A0-BA36-52D79D9F4144} = {AB1E4CAD-E733-44CD-84C6-F7DD90436173}
+		{5BA9BBBF-B19D-417B-814F-DC812170988E} = {AB1E4CAD-E733-44CD-84C6-F7DD90436173}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EE24C20-7128-475A-BA26-EC4266B2AE15}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		GerenciadorDeTarefas.Domain\GerenciadorDeTarefas.Domain.projitems*{5ba9bbbf-b19d-417b-814f-dc812170988e}*SharedItemsImports = 13
+		GerenciadorDeTarefas.Domain\GerenciadorDeTarefas.Domain.projitems*{ebe19ec3-02d2-4d5e-be04-bf9cdb28b1a9}*SharedItemsImports = 5
+		GerenciadorDeTarefas.Infrastructure\GerenciadorDeTarefas.Infrastructure.projitems*{ebe19ec3-02d2-4d5e-be04-bf9cdb28b1a9}*SharedItemsImports = 5
+		GerenciadorDeTarefas.Infrastructure\GerenciadorDeTarefas.Infrastructure.projitems*{edd3d6d0-c880-43a0-ba36-52d79d9f4144}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

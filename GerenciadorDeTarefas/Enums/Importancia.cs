@@ -5,14 +5,14 @@ namespace GerenciadorDeTarefas.Enums;
 public enum Importancia
 {
     [Description("Crítica")]
-    Critica,
+    Critica = 0,
 
     [Description("Alta")]
-    Alta,
+    Alta = 1,
 
     [Description("Média")]
-    Media,
+    Media = 2,
 
     [Description("Baixa")]
-    Baixa,
+    Baixa = 3,
 }

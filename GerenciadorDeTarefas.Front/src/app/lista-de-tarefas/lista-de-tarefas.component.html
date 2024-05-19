@@ -4,7 +4,7 @@
       <tr>
         <th scope="col">Tarefa</th>
         <th scope="col">Descriçao</th>
-        <th scope="col">Ações</th>
+        <th scope="col"><a href="/adicionar-tarefa" class="btn btn-primary btn-sm m-1">Nova tarefa</a></th>
       </tr>
     </thead>
     <tbody>
@@ -13,8 +13,9 @@
         <td>{{tarefa.descricao}}</td>
 
         <td>
-          <button class="btn btn-primary">Alterar</button>
-          <a href="/visualizar-tarefa/{{tarefa.id}}" class="btn btn-danger">Excluir</a>
+          <a href="/alterar-tarefa/{{tarefa.id}}" class="btn btn-primary btn-sm m-1">Alterar</a>
+          <button type="button"  class="btn btn-danger btn-sm" (click)="excluirTarefa(tarefa)">Excluir</button>
+          
         </td>
       </tr>
     </tbody>

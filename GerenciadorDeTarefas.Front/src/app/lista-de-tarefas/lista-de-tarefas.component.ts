@@ -12,6 +12,8 @@ import { NgFor } from '@angular/common';
 })
 export class ListaDeTarefasComponent {
 
+
+
   tarefas: any[] = [];
 
   constructor(private tarefasService: TarefasService) { }
@@ -26,5 +28,9 @@ export class ListaDeTarefasComponent {
         console.log(tarefas);
         return this.tarefas = tarefas;
       });
+  }
+
+  excluirTarefa(tarefa : any) {
+    throw new Error('Method not implemented.');
   }
 }

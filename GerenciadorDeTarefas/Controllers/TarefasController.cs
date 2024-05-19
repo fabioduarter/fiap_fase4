@@ -42,7 +42,7 @@ public class TarefasController : ControllerBase
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(Tarefa), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<Tarefa>> GetTarefa(long id)
+    public async Task<ActionResult<Tarefa>> GetTarefa(int id)
     {
         return await _tarefaRepository.BuscarPorIdAsync(id) is Tarefa tarefa
             ? Ok(tarefa)
@@ -105,7 +105,7 @@ public class TarefasController : ControllerBase
     [HttpDelete("{id}")]
     [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> DeleteTarefa(long id)
+    public async Task<IActionResult> DeleteTarefa(int id)
     {
         return await _tarefaRepository.ExcluirAsync(id)
             ? NoContent()

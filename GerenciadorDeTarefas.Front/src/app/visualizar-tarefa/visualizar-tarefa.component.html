@@ -1,1 +1,51 @@
-<p>visualizar-tarefa works!</p>
+<div class="row justify-content-center m-2">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                {{statusTela.replace('-tarefa',' tarefa').toLocaleUpperCase()}} 
+            </div>
+            <div class="card-body">
+                <form  (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input 
+                            type="text" 
+                            id="nome" 
+                            class="form-control" 
+                            formControlName="nome"
+                            [value]="tarefa.nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <input 
+                            type="text" 
+                            id="descricao" 
+                            class="form-control" 
+                            formControlName="descricao" 
+                            [value]="tarefa.descricao">
+                    </div>
+                    <div class="mb-3">
+                        <label for="importancia" class="form-label">Importância</label>
+                        <select id="importancia" class="form-select" [value]="tarefa.importancia">
+                            <option *ngFor="let opcao of opcoesImportancia" [value]="opcao.valor">{{ opcao.valor }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dataprazo" class="form-label">Data Prazo</label>
+                        <input type="datetime-local" id="dataprazo" class="form-control" [value]="tarefa.prazo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dataDaConclusao" class="form-label">Data da Conclusão</label>
+                        <input type="datetime-local" id="dataDaConclusao" class="form-control" [value]="tarefa.dataDaConclusao">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dataDoCadastro" class="form-label">Data do Cadastro</label>
+                        <input type="datetime-local" id="dataDoCadastro" class="form-control" [value]="tarefa.dataDoCadastro">
+                    </div>
+                    <input type="hidden" id="id" class="form-control" [value]="tarefa.id">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
