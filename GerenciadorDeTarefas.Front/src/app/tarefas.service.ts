@@ -11,13 +11,19 @@ export class TarefasService {
 
   constructor(private http: HttpClient) { }
 
-  obterTarefas(): Observable<any> {
-
+  obterTarefas(): Observable<any> 
+  {
     return this.http.get<any>(`${this.baseUrl}/tarefas`,this.getHttpOptions());
   }
 
-  obterUmaTarefa(idDaTarefa : number): Observable<any> {
+  obterUmaTarefa(idDaTarefa : number): Observable<any> 
+  {
     return this.http.get<any>(`${this.baseUrl}/tarefas/${idDaTarefa}`);
+  }
+
+  salvarNovaTarefa(tarefa : any) : Observable<any> 
+  {
+    return this.http.post(`${this.baseUrl}/tarefas`,tarefa);
   }
 
   getHttpOptions() {

@@ -26,13 +26,13 @@ public class TarefasControllerTest
         // Default Arrange
         var mockTarefaRepository = new Mock<ITarefasRepository>();
         mockTarefaRepository.Setup(m => m.BuscarTodasAsync()).ReturnsAsync(new List<Tarefa>() { _tarefaCadastrada });
-        mockTarefaRepository.Setup(m => m.BuscarPorIdAsync(It.Is<long>(id => id != 1))).ReturnsAsync(() => null);
-        mockTarefaRepository.Setup(m => m.BuscarPorIdAsync(It.Is<long>(id => id == 1))).ReturnsAsync(_tarefaCadastrada);
+        mockTarefaRepository.Setup(m => m.BuscarPorIdAsync(It.Is<int>(id => id != 1))).ReturnsAsync(() => null);
+        mockTarefaRepository.Setup(m => m.BuscarPorIdAsync(It.Is<int>(id => id == 1))).ReturnsAsync(_tarefaCadastrada);
         mockTarefaRepository.Setup(m => m.CadastrarAsync(It.Is<Tarefa>(tarefa => tarefa.Nome == "Tarefa Cadastrada"))).ReturnsAsync(_tarefaCadastrada);
         mockTarefaRepository.Setup(m => m.EditarAsync(It.Is<Tarefa>(tarefa => tarefa.Id != 1))).ReturnsAsync(false);
         mockTarefaRepository.Setup(m => m.EditarAsync(It.Is<Tarefa>(tarefa => tarefa.Id == 1))).ReturnsAsync(true);
-        mockTarefaRepository.Setup(m => m.ExcluirAsync(It.Is<long>(id => id != 1))).ReturnsAsync(false);
-        mockTarefaRepository.Setup(m => m.ExcluirAsync(It.Is<long>(id => id == 1))).ReturnsAsync(true);
+        mockTarefaRepository.Setup(m => m.ExcluirAsync(It.Is<int>(id => id != 1))).ReturnsAsync(false);
+        mockTarefaRepository.Setup(m => m.ExcluirAsync(It.Is<int>(id => id == 1))).ReturnsAsync(true);
         _tarefasController = new TarefasController(mockTarefaRepository.Object);
     }
 

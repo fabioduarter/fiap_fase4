@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TarefasService } from '../tarefas.service';
 import { NgFor } from '@angular/common';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-visualizar-tarefa',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, ReactiveFormsModule],
   templateUrl: './visualizar-tarefa.component.html',
   styleUrl: './visualizar-tarefa.component.css'
 })
@@ -20,20 +22,18 @@ export class VisualizarTarefaComponent {
   ];
   statusTela = "";
   idDaTarefa: string = '';
-  tarefa : any = {
-    id: null,
-    nome: "",
-    descricao: "",
-    importancia: "",
-    prazo: "",
-    dataDoCadastro: "",
-    dataDaConclusao: ""
-  };
+  tarefa  = this.formBuilder.group({
+                                      id: [],
+                                      nome: ['', Validators.required],
+                                      descricao: ['', Validators.required],
+                                      importancia: ['', Validators.required],
+                                      prazo: ['', Validators.required],
+                                      dataDoCadastro: [],
+                                      dataDaConclusao: []
+                                    });
 
   constructor(private route: ActivatedRoute, private router : Router
-            ,private tarefasService: TarefasService) { 
-
-  }
+            ,private tarefasService: TarefasService, private formBuilder: FormBuilder,) { }
 
   ngOnInit(): void {
     
@@ -43,8 +43,10 @@ export class VisualizarTarefaComponent {
     if (this.idDaTarefa !== ''){
       this.tarefasService.obterUmaTarefa(parseInt(this.idDaTarefa)).subscribe(
         tarefa => {
+          
+          this.tarefa.patchValue(tarefa);
         
-        return this.tarefa = tarefa;
+        
       }, error => {
         // Se ocorrer um erro que não seja 404
         if (error.status === 404){
@@ -57,7 +59,15 @@ export class VisualizarTarefaComponent {
     }
     
   }
-  onSubmit(): void {
+
+  onSubmit() : void {
+
+  }
+  salvar(tarefa : any): void {
     //realiza a validação do formulário
+    this.tarefasService.salvarNovaTarefa(tarefa).subscribe(response => {
+      console.log('response');
+      console.log(response);
+    });
   }
 }
