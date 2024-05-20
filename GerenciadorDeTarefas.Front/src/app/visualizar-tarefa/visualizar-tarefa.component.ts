@@ -13,6 +13,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angu
   styleUrl: './visualizar-tarefa.component.css'
 })
 export class VisualizarTarefaComponent {
+
   
   opcoesImportancia = [
     {indice: 0, valor: "Critica", descricao: "Crítica"}, 
@@ -61,13 +62,26 @@ export class VisualizarTarefaComponent {
   }
 
   onSubmit() : void {
-
+    console.log(this.tarefa)
+    if (this.tarefa.status === "VALID"){
+      let _id = this.tarefa.value.id ?? 0;
+      if (_id){
+        this.tarefasService.salvarTarefaAlterada(this.tarefa.value).subscribe(response => {
+          console.log(response);
+        });
+      } else {
+        this.tarefasService.salvarTarefaNova(this.tarefa.value).subscribe(response => {
+          
+            console.log(response);
+            this.voltar();
+          
+        });
+      }
+    } else {
+      alert("Existem dados faltando preencher!");
+    }
   }
-  salvar(tarefa : any): void {
-    //realiza a validação do formulário
-    this.tarefasService.salvarNovaTarefa(tarefa).subscribe(response => {
-      console.log('response');
-      console.log(response);
-    });
+  voltar() : void {
+    this.router.navigate(['/lista-de-tarefas']);
   }
 }
