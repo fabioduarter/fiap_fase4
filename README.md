@@ -60,3 +60,6 @@ Este documento descreve os requisitos do sistema para o desenvolvimento de um ge
 
 ## Conclusão
 Este documento estabelece os requisitos do sistema para o desenvolvimento do gerenciador de tarefas. O cumprimento desses requisitos garantirá a entrega de um sistema funcional, de alta qualidade e fácil de manter.
+
+
+Confiruação para execução do projeto: https://github.com/fabioduarter/fiap_fase4/wiki
