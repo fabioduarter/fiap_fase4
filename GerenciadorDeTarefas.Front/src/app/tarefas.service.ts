@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TarefasService {
 
-  private baseUrl = 'https://localhost:44388/api'; // URL da sua API de tarefas
+  private baseUrl = 'http://localhost:5262/api'; // URL da sua API de tarefas
 
   constructor(private http: HttpClient) { }
 
