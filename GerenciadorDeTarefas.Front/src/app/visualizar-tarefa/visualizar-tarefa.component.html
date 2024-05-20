@@ -41,7 +41,10 @@
                         <input type="datetime-local" id="dataDoCadastro" class="form-control" formControlName="dataDoCadastro">
                     </div>
                     <input type="hidden" id="id" class="form-control" formControlName="id">
-                    <button type="submit" class="btn btn-primary" >Enviar</button>
+                    <div class="row">
+                        <div class="col-md-2"><button type="submit" class="btn btn-primary" >Enviar</button></div>
+                        <div class="col-md-2"><button type="button" class="btn btn-secondary" (click)="voltar()">Voltar</button></div>
+                    </div>
                 </form>
             </div>
         </div>

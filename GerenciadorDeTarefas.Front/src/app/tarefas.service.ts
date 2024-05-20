@@ -21,15 +21,19 @@ export class TarefasService {
     return this.http.get<any>(`${this.baseUrl}/tarefas/${idDaTarefa}`);
   }
 
-  salvarNovaTarefa(tarefa : any) : Observable<any> 
+  salvarTarefaNova(tarefa : any) : Observable<any> 
   {
     return this.http.post(`${this.baseUrl}/tarefas`,tarefa);
+  }
+  salvarTarefaAlterada(tarefa : any) : Observable<any> 
+  {
+    return this.http.put(`${this.baseUrl}/tarefas/${tarefa.id}  `,tarefa, this.getHttpOptions());
   }
 
   getHttpOptions() {
     return {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8'
+        'Content-Type': 'application/json'
       })
     };
   }
